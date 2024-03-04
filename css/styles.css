@@ -122,7 +122,21 @@ header a {
     color: var(--pressed-state-color);
 }
 
-.nav-item:hover::after {
+.nav-item:hover::after,
+.nav-item:focus::after {
+    opacity: 1;
+}
+
+.portfolio-page::after,
+.main-page::after {
+    opacity: 1;
+}
+
+.current-link {
+    color: var(--pressed-state-color);
+}
+
+.current-link::after {
     opacity: 1;
 }
 
@@ -206,10 +220,11 @@ header a {
 .icon-wrapper {
     border-radius: 4px;
     margin-bottom: 8px;
-    padding: 24px 100px;
+    height: 120px;
     background-color: var(--light-color);
     display: flex;
     justify-content: center;
+    align-items: center;
 }
 
 .element-title {
@@ -269,6 +284,7 @@ header a {
     border-radius: 0 0 4px 4px;
     box-shadow: 0px 2px 1px 0px rgba(46, 47, 66, 0.08), 0px 1px 1px 0px rgba(46, 47, 66, 0.16), 0px 1px 6px 0px rgba(46, 47, 66, 0.08);
     background-color: var(--white-bg-color);
+    padding-bottom: 32px;
 }
 
 .team-text {
@@ -282,7 +298,6 @@ header a {
     display: flex;
     justify-content: center;
     gap: 24px;
-    margin-bottom: 32px;
 }
 
 
@@ -319,8 +334,7 @@ header a {
 }
 
 .footer-title {
-    font-size: 24px;
-    font-weight: 400;
+    font-weight: 500;
     letter-spacing: 0.02em;
     color: var(--white-bg-color);
     margin-bottom: 16px;
@@ -342,6 +356,7 @@ header a {
     height: 40px;
     border-radius: 50%;
     background-color: var(--primary-brand-color);
+    transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1);
     }
 
 .footer-social {
@@ -375,13 +390,18 @@ header a {
     padding: 12px 24px;
     border-radius: 4px;
     border: 1px solid var(--accent-color);
-    transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1);
-}
+    transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1),
+                border-color 250ms cubic-bezier(0.4, 0, 0.2, 1),
+                box-shadow 250ms cubic-bezier(0.4, 0, 0.2, 1);}
 
 .works-btn:hover,
 .works-btn:focus {
     color: var(--white-bg-color);
     background-color: var(--pressed-state-color);
+    border: 1px solid var(--pressed-state-color);
+    box-shadow: 0px 2px 2px 0px rgba(0, 0, 0, 0.12), 
+                0px 2px 1px 0px rgba(0, 0, 0, 0.08), 
+                0px 3px 1px 0px rgba(0, 0, 0, 0.10);
 }
 
 .works-btn-list {
@@ -400,6 +420,7 @@ header a {
 
 .works-list-item {
     width: calc((100% - 48px) / 3);
+    transition: box-shadow 250ms cubic-bezier(0.4,0,0.2,1);
 }
 
 .works-list-item img {
@@ -434,8 +455,14 @@ header a {
     transition: transform 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-.works-item-wrapper:hover .overlay-text {
+.works-list-item:hover .overlay-text {
     transform: translateY(0);
+}
+
+.works-list-item:hover {
+    box-shadow: 0px 2px 1px 0px rgba(46, 47, 66, 0.08), 
+                0px 1px 1px 0px rgba(46, 47, 66, 0.16), 
+                0px 1px 6px 0px rgba(46, 47, 66, 0.08);
 }
 
 .header-container {
@@ -565,7 +592,6 @@ header a {
     background-color: var(--accent-color);
     border: 1px solid var(--subtle-text-color);
     border-radius: 50%;
-    padding: 8px;
     cursor: pointer;
     transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
@@ -580,8 +606,6 @@ header a {
 .modal-close-icon {
     fill: var(--dark-color);
     transition: fill 250ms cubic-bezier(0.4, 0, 0.2, 1);
-    width: 100%;
-    height: 100%;
 }
 
 .modal-close-btn:hover .modal-close-icon,
